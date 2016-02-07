@@ -5,10 +5,8 @@ var finDelJuego = false;
 var nombreJugador1 = "Jugador 1"; 
 var nombreJugador2 = "Jugador 2"; 
  
-function mostrarInicio() { 
-   document.getElementById("inicio").style.visibility = 'visible'; 
-   document.getElementById("partida").style.visibility = 'hidden'; 
-   document.getElementById("ayuda").style.visibility = 'hidden'; 
+function mostrarInicio(){
+   $.mobile.changePage("#inicio");
 } 
  
 function mostrarPartida() { 
@@ -28,8 +26,7 @@ function iniciarJuego() {
    numJugadas = 0; 
     turno = "1"; 
    document.getElementById("turno").innerHTML = "Turno " + nombreJugador1; 
-   iniciarTablero(); 
-   mostrarPartida(); 
+   iniciarTablero();
 } 
  
 function iniciarTablero() { 

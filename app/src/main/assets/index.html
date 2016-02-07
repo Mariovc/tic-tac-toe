@@ -1,107 +1,109 @@
 <!DOCTYPE HTML5>
 <html lang="es">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, target
--densitydpi=medium-dpi">
-    <link   href="estilos.css" rel="stylesheet" type="text/css">
-      <script src="funciones.js"></script> 
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
-   </head> 
-   <body> 
-      <!-- Pág. Inicio --> 
-      <div id="inicio" style="width:100%; position:absolute; top:0;  
-            left:0; visibility:visible;"> 
-         <div class="cabecera"> 
-            <h1 align="center">3 en Raya</h1> 
-         </div> 
-         <div style="width:50%; margin-left:auto; margin-right:auto;"> 
-            <table align="center"> 
-               <tr> 
-                  <td><img src=  
-   
-  "http://www.androidcurso.com/images/certificado_upv.jpg"></td> 
-                  <td><button type"button" onClick="iniciarJuego();">  
-             
-  Jugar</button></td> 
-               </tr> 
-               <tr> 
-                  <td align="center"><a href="http://www.androidcurso.com">  
-                Android 
-Curso</a></td> 
-                  <td><button type"button" onClick="mostrarAyuda();">  
-             
-  Ayuda</button></td> 
-                </tr> 
-            </table> 
-         </div> 
-      </div> 
-      <!-- /Pág. Inicio --> 
-      <!-- Pág. Partida --> 
-      <div id="partida" style= 
-    "width:100%; position:absolute; top:0; left:0; 
-visibility:hidden;"> 
-         <div  class="cabecera"> 
-            <h1 align="center" id="turno">Turno Jugador 1</h1> 
-         </div> 
-         <div id="tabla" align="center"> 
-            <table class="tabla" id="tabla"> 
-               <tbody> 
- <tr> 
-                  <td name="0_0" id="0_0" value="  "  
-      onClick="click_celda('0_0');"></td> 
-                  <td name="0_1" id="0_1" value="  "  
-      onClick="click_celda('0_1');"></td> 
-                  <td name="0_2" id="0_2" value="  "  
-      onClick="click_celda('0_2');"></td> 
-               </tr> 
-               <tr> 
-                  <td name="1_0" id="1_0" value="  "  
-      onClick="click_celda('1_0');"></td> 
-                  <td name="1_1" id="1_1" value="  "  
-      onClick="click_celda('1_1');"></td> 
-                  <td name="1_2" id="1_2" value="  "  
-      onClick="click_celda('1_2');"></td> 
-               </tr> 
-               <tr> 
-                  <td name="2_0" id="2_0" value="  "  
-      onClick="click_celda('2_0');"></td> 
-                  <td name="2_1" id="2_1" value="  "  
-      onClick="click_celda('2_1');"></td> 
-                  <td name="2_2" id="2_2" value="  "  
-      onClick="click_celda('2_2');"></td> 
-               </tr> 
-               </tbody> 
-            </table> 
-         </div> 
-         <div> 
-            <button type"button"  
-      onClick="mostrarInicio();">Inicio</button> 
-            <button type"button"  
-      onClick="iniciarJuego();">Reiniciar</button> 
-         </div> 
-      </div> 
-      <!-- /Pág. Partida --> 
-      <!-- Pág. Ayuda --> 
-      <div id="ayuda" style= 
-    "width:100%; position:absolute; top:0; left:0; 
-visibility:hidden;">             <div  class="cabecera"> 
-            <h1 id="turno" align="center">Ayuda</h1> 
-         </div> 
-         <div> 
-            <h3>Reglas:</h3> 
-            <p>Trata de colocar 3 fichas en línea. Vale ponerlas en 
-horizontal, vertical o diagonal. Si se rellenan todas las casilla sin que 
-ningún jugador haya conseguido poner 3 fichas en línea, entonces se 
-produce un empate.</p> 
-            <h3>¿Cómo jugar?</h3> 
- <p>Empieza el jugador 1, que juega con X, luego le toca tirar 
-al jugador 2, que juega con O. Cuando se termina la partida puedes volver 
-a jugar sin ir a la pantalla inicial pulsando el botón reiniciar.</p> 
-         </div> 
-         <div> 
-           <button type"button" onClick="mostrarInicio();">Inicio</button> 
-         </div> 
-      </div> 
-      <!-- /Pág. Ayuda --> 
-   </body> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="jquery.mobile-1.4.5.min.css"/>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script>
+      $(document).bind('mobileinit',function(){
+         $.mobile.changePage.defaults.changeHash = false;
+         $.mobile.hashListeningEnabled = false;
+         $.mobile.pushStateEnabled = false;
+      });
+
+
+    </script>
+    <script src="jquery.mobile-1.4.5.min.js"></script>
+    <link href="estilos.css" rel="stylesheet" type="text/css">
+    <script src="funciones.js"></script>
+</head>
+<body>
+<!-- Pág. Inicio -->
+<div data-role="page" data-theme="b" id="inicio">
+    <div data-role="header">
+        <h1>3 en Raya</h1>
+    </div>
+    <div data-role="content">
+        <a href="#partida" data-role="button" data-transition="pop"
+           onClick="iniciarJuego();">Jugar</a>
+        <a href="#ayuda" data-role="button"
+           data-display="overlay">Cerrar</a>
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <h3>DEU UPV</h3>
+    </div>
+</div>
+<!-- /Pág. Inicio -->
+<!-- Pág. Ayuda -->
+<div data-role="panel" data-theme="b" id="ayuda">
+    <h3>Reglas:</h3>
+    <p>Trata de colocar 3 fichas en línea. Vale ponerlas en horizontal,
+        vertical o diagonal. Si se rellenan todas las casillas sin que ningún
+        jugador haya conseguido poner 3 fichas en línea, entonces se produce un
+        empate.</p>
+    <h3>¿Cómo jugar?</h3>
+    <p>Empieza el jugador 1, que juega con X, luego le toca tirar al
+        jugador 2, que juega con O. Cuando se termina la partida puedes volver a
+        jugar sin ir a la pantalla inicial pulsando el botón reiniciar.</p>
+    <a href="#ayuda" data-role="button" data-display="overlay">Cerrar</a>
+</div>
+<!-- /Pág. Ayuda -->
+<!-- Pág. Partida -->
+<div data-role="page" data-theme="b" id="partida">
+    <div data-role="header">
+        <a href="#inicio" data-icon="home">Inicio</a>
+        <h1>3 en Raya</h1>
+        <a href="#" data-icon="refresh" class="ui-btn-active"
+           onClick="iniciarJuego();">Reiniciar</a>
+    </div>
+    <div data-role="content">
+        <div id="tabla" align="center" style="padding:10px">
+            <table class="tabla" id="tabla">
+                <tbody>
+                <tr>
+                    <td name="0_0" id="0_0" value="  "
+
+                        onClick="click_celda('0_0');"></td>
+                    <td name="0_1" id="0_1" value="  "
+
+                        onClick="click_celda('0_1');"></td>
+                    <td name="0_2" id="0_2" value="  "
+
+                        onClick="click_celda('0_2');"></td>
+                </tr>
+                <tr>
+                    <td name="1_0" id="1_0" value="  "
+
+                        onClick="click_celda('1_0');"></td>
+                    <td name="1_1" id="1_1" value="  "
+
+                        onClick="click_celda('1_1');"></td>
+                    <td name="1_2" id="1_2" value="  "
+
+                        onClick="click_celda('1_2');"></td>
+                </tr>
+                <tr>
+                    <td name="2_0" id="2_0" value="  "
+
+                        onClick="click_celda('2_0');"></td>
+                    <td name="2_1" id="2_1" value="  "
+
+                        onClick="click_celda('2_1');"></td>
+                    <td name="2_2" id="2_2" value="  "
+
+                        onClick="click_celda('2_2');"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <h1 id="turno">Turno Jugador 1</h1>
+    </div>
+</div>
+<!-- /Pág. Partida -->
+
+</body>
 </html> 
